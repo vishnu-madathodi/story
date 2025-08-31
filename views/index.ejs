@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>public API project</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <!-- google font lik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!-- google icons link -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="full-center">
+    <div id="container" class="container">
+      <form
+        action="/getWeather"
+        class="full-center flex-column container-form"
+        method="post"
+      >
+        <!-- div for input section -->
+        <div
+          class="input-container full-width full-center split-to-end"
+          id="searchContainer"
+        >
+          <input
+            name="city"
+            id="city"
+            class="city"
+            type="text"
+            placeholder="Search for the city"
+          />
+          <button id="search" class="search full-center" type="submit">
+            <span class="material-symbols-outlined icon"> search </span>
+          </button>
+        </div>
+        <!-- div for showing content only if there is anything returned -->
+        <% if(isReturned == "success") { %>
+        <div class="content full-width" id="content">
+          <div>
+            <span class="material-symbols-outlined icon"> location_on </span>
+            <%= city %>
+          </div>
+          <div class="date" id="date">Wed, 07 Aug</div>
+          <div class="weather-icon" id="weatherIcon">
+            <img
+              class="weather-img"
+              src="/assets/weather/<%= iconName %>.svg"
+              alt="icon for weather"
+            />
+          </div>
+          <div class="temperature" id="temperature">
+            <div><%= temperature %> °C</div>
+            <div class="codition" id="condition"><%= condition %></div>
+          </div>
+          <div class="humidity conditions" id="humidity">
+            <div class="humidity-icon">
+              <span class="material-symbols-outlined icon"> water_drop </span>
+            </div>
+            <div>Humidity</div>
+            <div><%= HumidityValue %></div>
+          </div>
+          <div class="wind-speed conditions" id="windSpeed">
+            <div class="wind-speed">
+              <span class="material-symbols-outlined icon"> air </span>
+            </div>
+            <div>Wind Speed</div>
+            <div><%= windSpeedValue %></div>
+          </div>
+        </div>
+        <!-- to show when there is an error -->
+        <% } if(isReturned -= "error"){ %>
+        <div class="error not-found message" id="error"></div>
+        <% } if(isReturned == "Default"){ %>
+        <!-- no search and not found div -->
+        <div class="no-search message" id="noSearch"></div>
+        <% } %>
+      </form>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="../scripts/script.js"></script>
+  </body>
+</html>

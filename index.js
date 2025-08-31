@@ -17,7 +17,7 @@ app.use((req, res, next) => {
   (res.locals.HumidityValue = "Default"),
   (res.locals.windSpeedValue = "Default"),
   (res.locals.temperature = "Default"),
-  (res.locals.condition = "Default"),
+  (res.locals.condition = "Default")
   next();
 });
 
@@ -43,7 +43,7 @@ app.post("/getWeather", async (req, res) => {
       iconName: iconName, //need to work on this to change the icon
       HumidityValue: response.data.main.humidity,
       windSpeedValue: response.data.wind.speed,
-      temperature: response.data.main.temp,
+      temperature: kelvinToCelsius(response.data.main.temp),
       condition: response.data.weather[0].main
     });
   } catch (error) {
@@ -57,3 +57,9 @@ app.post("/getWeather", async (req, res) => {
 app.listen(port, () => {
   console.log(`App is listening on the port ${port}`);
 });
+
+//scripts
+function kelvinToCelsius(k) {
+  return Math.round(k - 273.15);
+}
+

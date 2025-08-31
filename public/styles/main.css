@@ -114,15 +114,24 @@ input::placeholder {
   background: url("../assets/message/search-city.png");
 }
 
-/* .weather-img{
-	height: 100%;
-	width: 100%;
-} */
+.items {
+  display: flex;
+  align-items: center;
+}
 
 .conditions {
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: 30px 30px;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.temperature {
+  display: grid;
+  grid-template-rows: 30px 30px;
+  align-items: center;
+  row-gap: 0.5rem;
 }
 
 .conditions div:nth-child(1) {
@@ -162,5 +171,5 @@ input::placeholder {
 }
 
 .not-found {
-  background: url("../assets/message/search-city.png");
+  background: url("../assets/message/not-found.png");
 }

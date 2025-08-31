@@ -44,12 +44,12 @@
         <!-- div for showing content only if there is anything returned -->
         <% if(isReturned == "success") { %>
         <div class="content full-width" id="content">
-          <div>
+          <div class="items">
             <span class="material-symbols-outlined icon"> location_on </span>
             <%= city %>
           </div>
-          <div class="date" id="date">Wed, 07 Aug</div>
-          <div class="weather-icon" id="weatherIcon">
+          <div class="date items" id="date">Wed, 07 Aug</div>
+          <div class="weather-icon items" id="weatherIcon">
             <img
               class="weather-img"
               src="/assets/weather/<%= iconName %>.svg"
@@ -76,8 +76,9 @@
           </div>
         </div>
         <!-- to show when there is an error -->
-        <% } if(isReturned -= "error"){ %>
+        <% } if(isReturned == "error"){ %>
         <div class="error not-found message" id="error"></div>
+        <h1 class="not-found-text">Sorry Not Found!</h1>
         <% } if(isReturned == "Default"){ %>
         <!-- no search and not found div -->
         <div class="no-search message" id="noSearch"></div>
